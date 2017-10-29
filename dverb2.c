@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "funcs.h"
 #include "vars.h"
+#include "global.h"
 
 /* DECLARATIONS */
 
@@ -22,7 +23,7 @@ void savegm_()
 /* 						!DISABLE GAME. */
 /* Note: save file format is different for PDP vs. non-PDP versions */
 
-    if ((e = fopen("dsave.dat", BINWRITE)) == NULL)
+    if ((e = fopen(save_name, BINWRITE)) == NULL)
 	goto L100;
 
     gttime_(&i); 
@@ -113,7 +114,7 @@ void rstrgm_()
 /* 						!DISABLE GAME. */
 /* Note: save file format is different for PDP vs. non-PDP versions */
 
-    if ((e = fopen("dsave.dat", BINREAD)) == NULL)
+    if ((e = fopen(save_name, BINREAD)) == NULL)
 	goto L100;
 
 #define do_uio(i, zbuf, cbytes) \
