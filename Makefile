@@ -1,13 +1,13 @@
 # Makefile for dungeon
 
 # Where to install the program
-BINDIR = /usr/games
+BINDIR = ${PREFIX}/games
 
 # Where to install the data file
-DATADIR = /usr/games/lib
+DATADIR = ${PREFIX}/games/lib
 
 # Where to install the man page
-MANDIR = /usr/share/man
+MANDIR = ${PREFIX}/share/man
 
 # The dungeon program provides a ``more'' facility which tries to
 # figure out how many rows the terminal has.  Several mechanisms are
@@ -18,9 +18,9 @@ MANDIR = /usr/share/man
 # more option 1: use the termcap routines.  On some systems the LIBS
 # variable may need to be set to -lcurses.  On some it may need to
 # be /usr/lib/termcap.o.  These options are commented out below.
-LIBS = -ltermcap
+##LIBS = -ltermcap
 TERMFLAG =
-# LIBS = -lcurses
+LIBS = -lcurses
 # LIBS = /usr/lib/termcap.o
 
 # more option 2: use the terminfo routines.  On some systems the LIBS
@@ -70,8 +70,8 @@ dungeon: $(OBJS) dtextc.dat
 
 install: zork dtextc.dat
 	mkdir -p $(BINDIR) $(LIBDIR) $(MANDIR)/man6
-	cp zork $(BINDIR)
-	cp dtextc.dat $(DATADIR)
+	cp zork $(BINDIR)/
+	cp dtextc.dat $(DATADIR)/
 	cp dungeon.6 $(MANDIR)/man6/
 
 clean:
