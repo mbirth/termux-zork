@@ -9,11 +9,15 @@
 
 #include "funcs.h"
 #include "vars.h"
+#include "global.h"
+
+char* save_name = "";
 
 void main(argc, argv)
 int argc;
 char **argv;
 {
+    save_name = argc < 2 ? "dsave.dat" : argv[1];
 /* 1) INITIALIZE DATA STRUCTURES */
 /* 2) PLAY GAME */
 
